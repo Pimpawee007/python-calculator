@@ -6,12 +6,18 @@ class Calculator:
         return a - b # แก้เป็น a-b
 
     def multiply(self, a, b):
+        negative = False
         result = 0
         if (a<0 and b<0):
             a, b = abs(a), abs(b)
+        elif (a<0) or (b<0):
+            a, b = abs(a), abs(b)
+            negative = True
         for i in range(b): # b+1 ทำให้ลูปเกินมา 1 รอบ แก้เป็น b
             result = self.add(result, a)
-        return result
+        if negative is True:
+            return -result
+        else:return result
 
     def divide(self, a, b):
         result = 0
